@@ -1,0 +1,40 @@
+Код для Курсовой
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+def estimate_pi(num_samples):
+    # Генерация случайных точек
+    x = np.random.uniform(0, 1, num_samples)
+    y = np.random.uniform(0, 1, num_samples)
+
+    # Проверка попадания в круг
+    inside_circle = (x**2 + y**2) <= 1
+    num_inside = np.sum(inside_circle)
+
+    # Оценка числа π
+    pi_estimate = 4 * num_inside / num_samples
+
+    return pi_estimate, x, y, inside_circle
+
+num_samples = 10000
+
+pi_estimate, x, y, inside_circle = estimate_pi(num_samples)
+
+print(f"Оценка числа π: {pi_estimate}")
+
+plt.figure(figsize=(8, 8))
+plt.scatter(x[inside_circle], y[inside_circle], color='blue', s=1, label='Внутри круга')
+plt.scatter(x[~inside_circle], y[~inside_circle], color='red', s=1, label='Снаружи круга')
+plt.title(f"Оценка числа π с помощью метода Монте-Карло\nОценка: {pi_estimate}")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.legend()
+plt.axis('equal')
+plt.grid()
+plt.show()
+
+
+
+
+
