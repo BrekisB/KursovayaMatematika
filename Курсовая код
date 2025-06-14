@@ -4,15 +4,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def estimate_pi(num_samples):
-    # Генерация случайных точек
+
     x = np.random.uniform(0, 1, num_samples)
     y = np.random.uniform(0, 1, num_samples)
 
-    # Проверка попадания в круг
     inside_circle = (x**2 + y**2) <= 1
     num_inside = np.sum(inside_circle)
 
-    # Оценка числа π
     pi_estimate = 4 * num_inside / num_samples
 
     return pi_estimate, x, y, inside_circle
@@ -33,6 +31,9 @@ plt.legend()
 plt.axis('equal')
 plt.grid()
 plt.show()
+
+
+
 
 
 
